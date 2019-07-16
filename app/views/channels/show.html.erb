@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Chat</title>
+	<link rel="stylesheet" href="">
+	<style>
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:black;
+  overflow-x: hidden;
+  padding-top: 20px;
+  
+}
+
+.navv{
+  margin-left: 250px; 
+}
+
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: white;
+  background-color: silver;
+}
+
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  margin-top: 0px;
+  font-size: 18px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  align: left;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 30;
+  font-size: 15px;
+  overflow: hidden;  
+  background-color: 	royalblue;
+  
+}
+
+li {
+  float: right;
+ 
+}
+
+li a {
+  display: block;
+  color: #cadetblue;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: silver;
+}
+
+li a.active {
+  color: blue;
+  background-color: lightskyblue;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.message{
+  #background-color: #ddd;
+  margin-top: 100px;
+  align: left;
+  
+  
+}
+.chatuser{
+  background-color: #ddd;
+  #margin-top: 350px;
+  
+}
+
+
+</style>
+</head>
+<body>
+<div class="navv">
+<ul>
+  <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>  
+  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+  <li><%= link_to current_user.email, '/users/edit' %></li>
+  </ul>
+</div>
+
+<div class="sidenav">
+<%= link_to 'Friends', new_channel_path %><br><br>
+<%= link_to 'Channels', new_channel_path(:id => @workspace.id) %> 
+  <ul class="list-group list-group-flush"> 
+      <% @channels.each do |channel| %>
+     <li class="list-item"><%= link_to channel.channel_name, channel_path(channel) %></li><br>
+     <% end %>
+     </li>
+  </ul>
+<br><br>
+<%= link_to 'Invite Friend', new_channel_path %><br><br>
+<%= link_to 'Favourite Message', new_channel_path %><br><br>
+<%= link_to 'About', new_channel_path %><br><br>                
+<%= link_to 'Workspace Setting',edit_workspace_path(:id => @workspace.id)%><br><br>  
+
+
+  </div>
+</div>
+</div>
+
+
+<div class="main">
+<hr>
+<%= @channel.channel_name %>
+<hr>
+
+<div class="setting">
+   <%= link_to 'Edit', edit_channel_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
+   <%= link_to "Delete",  @channel, :id => "open-contacts-dialog-btn",
+        :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Add Member', channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
+</div>
+
+
+
+<div class="message">
+  <% @messages.each do |message| %> 
+    <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
+    <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
+        <%= message.msg_body %>
+        
+    </div><br>
+  <% end %>
+  
+</div>
+<br><br>
+
+<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create')  do |f| %>
+  <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
+ 
+   <div class="form-group">
+  <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: 'Write Something' %>
+  
+</div>
+
+<%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
+
+<% end %>
+ 
+</body>
+</html>

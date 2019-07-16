@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="">
+  <style>
+
+  body {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+}
+  
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 30;
+  font-size: 15px;
+  overflow: hidden;  
+  background-color: royalblue;
+}
+
+li {
+  float: right;
+ 
+}
+
+li a {
+  display: block;
+  color: #cadetblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: silver;
+}
+
+li a.active {
+  color: blue;
+  background-color: lightskyblue;
+}
+  </style>
+</head>
+<body>
+
+
+<ul>
+ 
+
+  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+  <li><%= link_to current_user.email, '/users/edit' %></li>
+  
+</ul>
+
+<div class="d-flex justify-content-center">
+<div class="col-md-4 col-md-offset-4">
+   <h1>Create Workspace</h1>
+   <%= form_for @uworkspace, url: {action: "create"} do |f| %>
+  <%= f.label :wks_name %>
+  <%= f.text_field :wks_name, class: 'form-control' %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :wks_password %>
+  <%= f.password_field :wks_password, class: 'form-control' %> <br>
+
+  <%= f.submit "Create Workspace", class: "btn btn-primary" %>
+<% end %>
+
+</div>
+</div>
+

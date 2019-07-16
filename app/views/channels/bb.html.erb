@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="">
+  <style>
+
+  body {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+}
+  
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 30;
+  font-size: 15px;
+  overflow: hidden;  
+  background-color: #663399;
+}
+
+li {
+  float: right;
+ 
+}
+
+li a {
+  display: block;
+  color: #cadetblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: blue;
+}
+
+li a.active {
+  color: blue;
+  background-color: lightskyblue;
+}
+  </style>
+</head>
+<body>
+
+
+<ul>
+  <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>  
+  <li><a href="#home">Home</a></li>
+  
+</ul>
+<div class="main">
+<h1>Create Channels</h1>
+<%= form_for  @channel, url: {action: "create"} do |form| %>
+    <div class="field">
+    <%= form.label :channel_name %></a>
+    <%= form.text_field :channel_name %>
+  </div>
+
+  <div class="field">
+  <%= form.label :channel_type %></a>
+  <%= form.select :channel_type, [['Public','public'],['Private','private']] %>
+  </div>
+
+  <div class="field">    
+    <%= form.hidden_field :workspace_id, value: @workspace.id %>
+  </div> 
+
+  <%= form.submit "Create", class: 'btn btn-primary btn-sm'  %>  
+
+    <%= button_to "Cancel", channels_path, :id => "open-contacts-dialog-btn",
+      :class => "btn btn-secondary btn-sm", :method => :get %>
+
+  </div>
+  </div>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Chat</title>
+	<link rel="stylesheet" href="">
+	<style>
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: lightgrey;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 10;
+  left: 10;
+  background:url("images/b.jpg");
+  background-position:left;
+  background-size:cover;
+  background-repet: no-repeat;
+  background-attachment:fixed;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 23px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: white;
+  background-color: red;
+}
+
+.main {
+  margin-left: 600px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 30;
+  font-size: 18px;
+  overflow: hidden;
+  border: 1px solid plum;
+  background-color: plum;
+}
+
+li {
+  float: right;
+ 
+}
+
+li a {
+  display: block;
+  color: #cadetblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+li a:hover:not(.active) {
+  background-color: violet;
+}
+
+li a.active {
+  color: white;
+  background-color: lightskyblue;
+}
+</style>
+</head>
+<body>
+<ul>
+  
+  <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>
+  <li><a href="#home">Home</a></li>
+  
+</ul>
+
+<div class="sidenav" style="background-color:black;color:white;border:1px solid red;">
+<%= link_to 'Friends', new_channel_path %><br><br>
+<%= link_to 'Channels', channellist_path %><br><br>
+<%= link_to 'Favourite Message', new_channel_path %><br><br>
+<%= link_to 'About', new_channel_path %>
+
+
+</div>
+
+<div class="main">
+<h1>Chat Application</h1>
+</div>
+
+</body>
+</html>

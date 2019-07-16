@@ -1,0 +1,29 @@
+
+
+<p id="notice"><%= notice %></p>
+<div class="d-flex justify-content-center">
+<div class="col-md-4 col-md-offset-4">
+<h1> Workspace Lists </h1>
+<table>
+<thead>
+<tr>
+      <th>Wks name</th>
+      <th colspan="3"></th>
+    </tr>
+ </thead>
+ <tbody>
+ <% @workspaces.each do |workspace| %>
+   <tr>
+     <td><%= workspace.wks_name %></td>
+     <td><%= button_to "Edit", edit_workspace_path(workspace), :id => "open-contacts-dialog-btn",
+     :class => "btn btn-primary btn-sm ", :method => :get %></td>        
+     <td><%= button_to "Delete",  workspace, :id => "open-contacts-dialog-btn",
+     :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %></td>        
+     
+   </tr>
+ <% end %>
+</tbody>
+</div>
+</div>
+</table>
+

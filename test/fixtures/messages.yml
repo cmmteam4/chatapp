@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  msg_body: MyString
+  starred: false
+  unread: false
+  user_id: 1
+  channel: one
+  user: one
+
+two:
+  msg_body: MyString
+  starred: false
+  unread: false
+  user_id: 1
+  channel: two
+  user: two
