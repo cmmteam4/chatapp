@@ -154,34 +154,33 @@ li a.active {
                 </tr>
             </thead>
             
-            <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td>
-                  <% if !user.invites.find_by(channel_id: params[:channel_id]).nil? %>
-                    <% if user.invites.find_by(channel_id: params[:channel_id]).role == 'member' %>
-                    <%= link_to "Uninvite", channel_invite_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
-                    <% end %>
-                                    
-                    <% if user.invites.find_by(channel_id: params[:channel_id]).role.empty? %>
-                    <%= link_to "Invite", channel_invite_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
-                    <% end %>
-                                
-                  <% end %>
-        
-                    <% if user.invites.find_by(channel_id: params[:channel_id]).nil? %>
-                    <%= link_to "Invite", channel_invite_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
-                    <% end %>
-                </td>
-        
-        
-              </tr>
-        
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if !user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
+            <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).role == 'member' %>
+            <%= link_to "Uninvite", workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
             <% end %>
-            </tbody>
-            </table>
+                            
+            <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).role.empty? %>
+            <%= link_to "Invite",  workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+            <% end %>
+                        
+          <% end %>
+
+            <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
+            <%= link_to "Invite",  workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+            <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+</table>
   </div>
 </div>
 <p id="new_article"><p>

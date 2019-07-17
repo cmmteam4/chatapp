@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'thread/index'
+  get 'wksinvite/index'
    devise_for :users
    root 'workspaces#workspace'
 
   get    '/choose_workspace',    to: 'workspaces#workspace' 
   get    '/workspaceList',    to: 'workspaces#wksList'  
   get    '/welcome',    to: 'welcome_page#home'
+  get    '/inviteFriend',    to: 'wksinvite#index'
+  
   #get    '/login',    to: 'welcome_page#login'
   #get    '/signup',    to: 'welcome_page#signup'
   #get    '/channellist',    to: 'channels#channellist'  
@@ -17,10 +21,11 @@ Rails.application.routes.draw do
 
 
 
-
-  
-  resources :workspaces
   resources :messages
+  
+  resources :workspaces do
+    resources :wksinvite
+  end
 
   resources :channels do
     resources :invite

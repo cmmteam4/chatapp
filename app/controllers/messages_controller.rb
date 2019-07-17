@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
     def index
         @message =Message.all
     end
+
     def new
         @message=Message.new
     end
@@ -13,4 +14,11 @@ class MessagesController < ApplicationController
          redirect_to channel_path(@channel)
         end
     end
+    
+    def destroy
+        Message.destroy(params[:id])
+        @channel=Channel.find(session[:curr_channel_id] )
+        redirect_to channel_path(@channel)
+    end
+    
 end

@@ -9,7 +9,15 @@ Bundler.require(*Rails.groups)
 module Chat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Tokyo'
+    
     config.load_defaults 5.2
+     #Rails.logger = Logger.new(STDOUT)
+     #Rails.logger.level = Logger::DEBUG
+     #Rails.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+     #config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -22,3 +22,18 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* Heroku deploy step
+    -heroku login -i
+    -heroku apps:create team5chatapp
+    -heroku git:remote -a team5chatapp
+    -git push heroku master
+    -heroku pg:info
+    -heroku addons:create heroku-postgresql
+    -heroku pg:info
+    -heroku config --app team5chatapp
+    -heroku run rails db:migrate
+   
+
+
+
