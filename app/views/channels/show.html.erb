@@ -134,7 +134,7 @@ li a.active {
 <div class="navv">
 <ul>
   <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>  
-  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+  <li><%= link_to "Log Out", logout_path, method: :delete %></li>
   <li><%= link_to current_user.email, '/users/edit' %></li>
   </ul>
 </div>
@@ -173,48 +173,24 @@ li a.active {
 </div>
 
 
-
 <div class="message">
   <% @messages.each do |message| %> 
     <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
     <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
         <%= message.msg_body %>
-        <small><%= link_to "Delete",  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>
-          <div class="float-right">
-            <%= form_for @thread, :url => url_for(:controller => 'thread', :action => 'create') do |f| %>              
-                <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
-
-                <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a>
-                <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">View</a>
-
-                <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">    </a>
-          </div>
-          <div class="collapse" id="collapse-<%= message.id %>"> 
-            <div class="form-group"> 
-              <%= f.text_area :thread_body, name:'thread_body', class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+        <small><%= link_to "Delete",  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
     </div><br>
-  <% end %>
-  
-</div>
-<br><br>
+  <% end %>  
+</div><br><br>
 
-<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create')  do |f| %>
+<%= form_with(model: @message, local: true) do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
  
-   <div class="form-group">
-  <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: 'Write Something' %>
-  
-</div>
+  <div class="form-group">
+    <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: 'Write Something' %>  
+  </div>
 
-<%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
-
+  <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
 <% end %>
  
 </body>

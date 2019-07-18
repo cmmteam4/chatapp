@@ -47,8 +47,10 @@ li a.active {
 
 <body>
 <ul>  
-  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+  
+<li><%= link_to "Log Out", logout_path, method: :delete %></li>
   <li><%= link_to current_user.email, '/users/edit' %></li>
+ 
 </ul>
 
 <div class="d-flex justify-content-center">

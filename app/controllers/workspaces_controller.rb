@@ -21,7 +21,7 @@ class WorkspacesController < ApplicationController
 
    def wksList    
      @workspaces = Workspace.all
-     @workspacelist = User.all.find_by(id: current_user).workspaces      
+     @workspacelist = User.all.find_by(id: current_user.id).workspaces      
      #if @workspacelist.nil?
      # redirect_to '/choose_workspace'
     #end

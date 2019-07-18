@@ -42,14 +42,21 @@ li a.active {
   color: blue;
   background-color: lightskyblue;
 }
+.leng{
+   font-size:25px;
+   float:left;
+   margin-left: 30px;
+   margin-top: 20px;
+    }
+
   </style>
 </head>
 <body>
 
 
 <ul>
-  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-  <li><%= link_to current_user.email, '/users/edit' %></li>
+<li><%= link_to "Log out", logout_path, method: :delete %></li>
+<li><%= link_to current_user.email %></li>
   
 </ul>
 
@@ -57,13 +64,13 @@ li a.active {
 <div class="d-flex justify-content-center">
 
 <div class="col-md-6 col-md-offset-3">
-<h1>Choose Your Workspace</h1><br><br>
+<h1><%= t('ChooseYourWorkspace')%> </h1><br><br>
 
-<%= button_to "Find your Workspace", workspaceList_path, :id => "open-contacts-dialog-btn",
+<%= button_to t('Find your Workspace'), workspaceList_path, :id => "open-contacts-dialog-btn",
 :class => "btn btn-primary btn-lg ", :method => :get %> 
 
 <br><br>
-<%= button_to "Create your Workspace", new_workspace_path, :id => "open-contacts-dialog-btn",
+<%= button_to t('Create your Workspace'), new_workspace_path, :id => "open-contacts-dialog-btn",
       :class => "btn btn-primary btn-lg", :method => :get %>
 </div>
 </div>

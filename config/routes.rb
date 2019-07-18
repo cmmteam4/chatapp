@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  scope "(:locale)", locale: /en|ja/ do
+  get    '/signup',  to: 'users#new'
+  post   '/signup',  to: 'users#create'
 
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+
+  
+  delete '/logout',  to: 'sessions#destroy'
+  root 'welcome_page#home'
+
+  
   get 'thread/index'
   get 'wksinvite/index'
-   devise_for :users
-   root 'workspaces#workspace'
+    
 
   get    '/choose_workspace',    to: 'workspaces#workspace' 
   get    '/workspaceList',    to: 'workspaces#wksList'  
@@ -20,7 +30,7 @@ Rails.application.routes.draw do
   
 
 
-
+  resources :users
   resources :messages
   
   resources :workspaces do
@@ -33,7 +43,7 @@ Rails.application.routes.draw do
 
  
  
-
+end
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

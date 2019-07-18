@@ -26,8 +26,8 @@ class ChannelsController < ApplicationController
     @channels=Channel.where(:workspace => session[:curr_workspace_id])
     @message = Message.new
     @messages = Message.all.includes(:user).where(:channel => @channel.id)
-    @thread = Thread.new
-    @threadlist = Thread.all
+    #@thread = Thread.new
+    #@threadlist = Thread.all
     helpers.set_channel @channel   
     #@users = current_user.invites.where(role: 'member')
     #@invite_member = User.all.find(current_user.id).invites.where(role: 'member')
