@@ -31,9 +31,9 @@ body {
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 style="font-size:50px">Welcome Our ChatApp</h1><br><br>
-    <%= link_to "Sign up now!", '/users/sign_up', class: "btn btn-lg btn-secondary" %>
-    <%= link_to "Login!", '/users/sign_in', class: "btn btn-lg btn-secondary" %>
+    <h1 style="font-size:50px"><%= t('Welcome Our ChatApp') %></h1><br><br>
+    <%= link_to t('Sign up now!'), '/users/sign_up', class: "btn btn-lg btn-secondary" %>
+    <%= link_to t('Login!'), '/users/sign_in', class: "btn btn-lg btn-secondary" %>
 
   </div>
 </div>

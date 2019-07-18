@@ -21,8 +21,7 @@ class WorkspacesController < ApplicationController
 
    def wksList    
      @workspaces = Workspace.all
-     @workspacelist = User.all.find_by(id: current_user).workspaces      
-     #if @workspacelist.nil?
+     @workspacelist = User.all.find_by(id: 1).workspaces
      # redirect_to '/choose_workspace'
     #end
       
@@ -44,7 +43,7 @@ class WorkspacesController < ApplicationController
       @workspace = Workspace.new(wks_name: @uworkspace['wks_name'])      
       if @workspace.save 
         @current = Workspace.last                  
-        @userworkspace=Userworkspace.new(user_id: current_user.id, workspace_id: @current.id, wks_name: @uworkspace['wks_name'], username: @uworkspace['username'], email: @uworkspace['email'], wks_password: @uworkspace['wks_password'], owner: "true")  
+        @userworkspace=Userworkspace.new(user_id: 1, workspace_id: @current.id, wks_name: @uworkspace['wks_name'], username: @uworkspace['username'], email: @uworkspace['email'], wks_password: @uworkspace['wks_password'], owner: "true")  
         if @userworkspace.save 
           helpers.set_workspace @workspace
           redirect_to @workspace, notice: 'Workspace was successfully created'  

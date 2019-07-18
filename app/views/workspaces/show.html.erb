@@ -118,14 +118,13 @@ li a.active {
 <div class="navv">
 <ul>
   <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>  
-　<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-<li><%= link_to current_user.email, '/users/edit' %></li>  
+　 
 </ul>
 </div>
 
 <div class="sidenav">
-<%= link_to 'Friends', new_channel_path %><br><br>
-<%= link_to 'Channels', new_channel_path(:id => @workspace.id) %> 
+<%= link_to t('Friends'), new_channel_path %><br><br>
+<%= link_to t('Channels'), new_channel_path(:id => @workspace.id) %> 
 <ul class="list-group list-group-flush"> 
       <% @channels.each do |channel| %>
     <li class="list-item"><%= link_to channel.channel_name, channel_path(channel) %></li><br>
@@ -133,10 +132,10 @@ li a.active {
   </li>
 </ul>
 <br><br>
-<%= link_to 'Invite Friend', workspace_wksinvite_index_path(@workspace) %><br><br>
-<%= link_to 'Favourite Message', new_channel_path %><br><br>
-<%= link_to 'About', new_channel_path %><br><br>
-<%= link_to 'Workspace Setting', edit_workspace_path%><br><br>
+<%= link_to t('Invite Friend'), workspace_wksinvite_index_path(@workspace) %><br><br>
+<%= link_to t('Favourite Message'), new_channel_path %><br><br>
+<%= link_to t('About'), new_channel_path %><br><br>
+<%= link_to t('Workspace Setting'), edit_workspace_path%><br><br>
 
 
   </div>

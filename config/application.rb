@@ -14,6 +14,8 @@ module Chat
     config.time_zone = 'Tokyo'
     
     config.load_defaults 5.2
+    config.i18n.available_locales = [:en, :ja]
+    config.i18n.default_locale = :en
      #Rails.logger = Logger.new(STDOUT)
      #Rails.logger.level = Logger::DEBUG
      #Rails.logger.datetime_format = "%Y-%m-%d %H:%M:%S"

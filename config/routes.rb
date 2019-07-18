@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
+scope "(:locale)", locale: /en|ja/ do
+  #scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/do
   get 'thread/index'
   get 'wksinvite/index'
-   devise_for :users
-   root 'workspaces#workspace'
+    root 'workspaces#workspace'
 
   get    '/choose_workspace',    to: 'workspaces#workspace' 
   get    '/workspaceList',    to: 'workspaces#wksList'  
@@ -34,6 +34,6 @@ Rails.application.routes.draw do
  
  
 
- 
+ end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

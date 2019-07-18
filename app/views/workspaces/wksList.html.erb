@@ -46,24 +46,23 @@ li a.active {
 </head>
 
 <body>
-<ul>  
-  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-  <li><%= link_to current_user.email, '/users/edit' %></li>
-</ul>
 
+
+<h1 align="center"><%= t('Workspace Lists') %></h1>
 <div class="d-flex justify-content-center">
 <div class="col-md-6 col-md-offset-4">
-<h1> Workspace Lists </h1>
+
   <div class="col-sm-4"><br>
     <ul class="list-group">
       <%= render partial: 'workspace', collection: @workspacelist %>         
   </div>  
   <br><br>
-  <%= link_to "Create Workspace", new_workspace_path %>
+  <%= link_to t('Create Workspace'), new_workspace_path %>
 </div>
 </div>
 </body>
 </html>
+
 
 
 

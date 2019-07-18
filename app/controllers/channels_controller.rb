@@ -26,8 +26,8 @@ class ChannelsController < ApplicationController
     @channels=Channel.where(:workspace => session[:curr_workspace_id])
     @message = Message.new
     @messages = Message.all.includes(:user).where(:channel => @channel.id)
-    @thread = Thread.new
-    @threadlist = Thread.all
+    #@thread = Thread.new
+    #@threadlist = Thread.all
     helpers.set_channel @channel   
     #@users = current_user.invites.where(role: 'member')
     #@invite_member = User.all.find(current_user.id).invites.where(role: 'member')
@@ -64,7 +64,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_name:params[:channel_name],channel_type:params[:channel_type],workspace_id:params[:workspace_id])
     @channel.save          
     @current=Channel.last
-    @uchannel=Invite.new(user_id: current_user.id, channel_id: @current.id, role: "owner")
+    @uchannel=Invite.new(user_id: 1, channel_id: @current.id, role: "owner")
     @uchannel.save   
     @workspace = Workspace.all
     @workspace = Workspace.find(params[:workspace_id])
