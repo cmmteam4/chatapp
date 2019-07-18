@@ -140,8 +140,8 @@ li a.active {
 </div>
 
 <div class="sidenav">
-<%= link_to 'Friends', new_channel_path %><br><br>
-<%= link_to 'Channels', new_channel_path(:id => @workspace.id) %> 
+<%= link_to t('Friends'), new_channel_path %><br><br>
+<%= link_to t('Channels'), new_channel_path(:id => @workspace.id) %> 
   <ul class="list-group list-group-flush"> 
       <% @channels.each do |channel| %>
      <li class="list-item"><%= link_to channel.channel_name, channel_path(channel) %></li><br>
@@ -149,10 +149,10 @@ li a.active {
      </li>
   </ul>
 <br><br>
-<%= link_to 'Invite Friend', workspace_wksinvite_index_path(@workspace) %><br><br>
-<%= link_to 'Favourite Message', new_channel_path %><br><br>
-<%= link_to 'About', new_channel_path %><br><br>                
-<%= link_to 'Workspace Setting',edit_workspace_path(:id => @workspace.id)%><br><br>  
+<%= link_to t('Invite Friend'), workspace_wksinvite_index_path(@workspace) %><br><br>
+<%= link_to t('Favourite Message'), new_channel_path %><br><br>
+<%= link_to t('About'), new_channel_path %><br><br>                
+<%= link_to t('Workspace Setting'),edit_workspace_path(:id => @workspace.id)%><br><br>  
 
 
   </div>
@@ -166,10 +166,10 @@ li a.active {
 <hr>
 
 <div class="setting">
-   <%= link_to 'Edit', edit_channel_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
-   <%= link_to "Delete",  @channel, :id => "open-contacts-dialog-btn",
+   <%= link_to t('Edit'), edit_channel_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
+   <%= link_to t('Delete'),  @channel, :id => "open-contacts-dialog-btn",
         :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Add Member', channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
+  <%= link_to t('Add Member'), channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
 </div>
 
 
@@ -178,7 +178,11 @@ li a.active {
     <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
     <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
         <%= message.msg_body %>
+<<<<<<< HEAD
         <small><%= link_to "Delete",  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
+=======
+        <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
+>>>>>>> 104289335091eb11b890c464d44d4d3c1f2bbaf5
     </div><br>
   <% end %>  
 </div><br><br>
@@ -187,10 +191,17 @@ li a.active {
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
  
   <div class="form-group">
+<<<<<<< HEAD
     <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: 'Write Something' %>  
   </div>
 
   <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
+=======
+    <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: t('Write Something') %>  
+  </div>
+
+  <%= f.submit t('Send'), class: 'btn btn-primary btn-sm' %>
+>>>>>>> 104289335091eb11b890c464d44d4d3c1f2bbaf5
 <% end %>
  
 </body>

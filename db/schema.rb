@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_18_080845) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_18_045613) do
+>>>>>>> 104289335091eb11b890c464d44d4d3c1f2bbaf5
 
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "channel_name"

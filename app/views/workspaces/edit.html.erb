@@ -58,7 +58,7 @@ li a.active {
 
 <div class="d-flex justify-content-center">
 <div class="col-md-4 col-md-offset-4">
-<h1>Edit Workspace</h1>
+<h1 align="center"><%= t('Edit Workspace') %></h1>
 
 <%= form_with(model: @workspace, local: true) do |form| %>
     <div class="field">
@@ -66,10 +66,10 @@ li a.active {
     <%= form.text_field :wks_name, class: 'form-control' %>
   </div>
   <br>
-  <%= form.submit "Update", class: 'btn btn-primary btn-sm'  %>   
+  <%= form.submit t('Update'), class: 'btn btn-primary btn-sm'  %>   
 <% end %>
 <br>
-<%= button_to "Delete",  @workspace, :id => "open-contacts-dialog-btn",
+<%= button_to t('Delete'),  @workspace, :id => "open-contacts-dialog-btn",
         :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 </div>

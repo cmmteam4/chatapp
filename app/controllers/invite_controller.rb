@@ -1,6 +1,6 @@
 class InviteController < ApplicationController
     def index
-       @users = User.where.not(id: current_user)   
+       @users = User.where.not(id: 1)   
        @workspace = Workspace.find(session[:curr_workspace_id]) 
        @channels=Channel.where(:workspace => session[:curr_workspace_id])    
     end

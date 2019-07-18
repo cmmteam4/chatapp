@@ -18,9 +18,9 @@
         <td><%= channel.channel_name %></td>
         <td><%= channel.channel_type %></td>
         <td><%= channel.workspace_id %></td>
-        <td><%= link_to 'Show', channel %></td>
-        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>        
-        <td><%= button_to "Delete",  channel, :id => "open-contacts-dialog-btn",
+        <td><%= link_to t('Show'), channel %></td>
+        <td><%= link_to t('Edit'), edit_channel_path(channel) %></td>        
+        <td><%= button_to t('Delete'),  channel, :id => "open-contacts-dialog-btn",
         :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
