@@ -1,0 +1,12 @@
+<%= link_to t('Friends'), new_channel_path %><br><br>
+  <%= link_to t('Channels'), new_channel_path(:id => @workspace.id) %> 
+  <ul class="list-group list-group-flush"> 
+      <% @channels.each do |channel| %>
+        <li class="list-item"><%= link_to channel.channel_name, channel_path(channel) %></li><br>
+      <% end %>  
+  </ul>
+  <br><br>
+  <%= link_to t('Invite Friend'), workspace_wksinvite_index_path(@workspace) %><br><br>
+  <%= link_to t('Favourite Message'), new_channel_path %><br><br>
+  <%= link_to t('About'), new_channel_path %><br><br>
+  <%= link_to t('Workspace Setting'),edit_workspace_path(:id => @workspace.id)%><br><br> 

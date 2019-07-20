@@ -1,73 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="">
-  <style>
-
-  body {
-  font-family: "Lato", sans-serif;
-  background-color: white;
-}
-  
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 30;
-  font-size: 15px;
-  overflow: hidden;  
-  background-color: royalblue;
-}
-
-li {
-  float: right;
- 
-}
-
-li a {
-  display: block;
-  color: #cadetblue;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  color: white;
-}
-
-li a:hover:not(.active) {
-  background-color: silver;
-}
-
-li a.active {
-  color: blue;
-  background-color: lightskyblue;
-}
-  </style>
-</head>
-
-<body>
-<ul>  
-  
-<li><%= link_to "Log Out", logout_path, method: :delete %></li>
-  <li><%= link_to current_user.email, '/users/edit' %></li>
- 
-</ul>
-
+<% provide(:title, "WokspaceList") %>
+<%= render 'layouts/nav' %>
 
 <h1 align="center"><%= t('Workspace Lists') %></h1>
 <div class="d-flex justify-content-center">
-<div class="col-md-6 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-4">
+    <div class="col-sm-6"><br>
+      <ul class="list-group list-group-flush">
+        <li class="list-item"><%= render partial: 'workspace', collection: @workspacelist %> </li>   
+      </ul>   
+    </div>  
+    <br><br>
+    <%= link_to t('Create Workspace'), new_workspace_path %>
+   <%= paginate  @workspacepage %> 
+  </div>
+</div>
 
-  <div class="col-sm-4"><br>
-    <ul class="list-group">
-      <%= render partial: 'workspace', collection: @workspacelist %>         
-  </div>  
-  <br><br>
-  <%= link_to t('Create Workspace'), new_workspace_path %>
-</div>
-</div>
-</body>
-</html>
 
 
 

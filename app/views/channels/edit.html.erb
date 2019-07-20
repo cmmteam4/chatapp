@@ -4,53 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="">
-  <style>
-
-  body {
-  font-family: "Lato", sans-serif;
-  background-color: white;
-}
   
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 30;
-  font-size: 15px;
-  overflow: hidden;  
-  background-color: royalblue;
-}
-
-li {
-  float: right;
- 
-}
-
-li a {
-  display: block;
-  color: #cadetblue;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  color: white;
-}
-
-li a:hover:not(.active) {
-  background-color: silver;
-}
-
-li a.active {
-  color: blue;
-  background-color: lightskyblue;
-}
-  </style>
 </head>
 <body>
 
 
-<ul>
-  <li style="float:left"><a href="#Workspace"><%= @workspace.wks_name %></a></li>  
-  
-</ul>
+<%= render 'layouts/nav2' %>
 
 <h1 align="center"><%= t('Editing Channel') %></h1>
 <div class="d-flex justify-content-center">
