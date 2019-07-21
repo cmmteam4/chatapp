@@ -50,7 +50,7 @@ class ChannelsController < ApplicationController
   # GET /channels/new
   def new
     @channel = Channel.new
-    @workspace = Workspace.find(params[:id])
+    @workspace = Workspace.find(session[:curr_workspace_id])
   end
 
   # GET /channels/1/edit
@@ -62,13 +62,17 @@ class ChannelsController < ApplicationController
   # POST /channels  
   def create      
     @channel = Channel.new(channel_name:params[:channel_name],channel_type:params[:channel_type],workspace_id:params[:workspace_id])
-    @channel.save          
-    @current=Channel.last
-    @uchannel=Invite.new(user_id: current_user.id, channel_id: @current.id, role: "owner")
-    @uchannel.save   
-    @workspace = Workspace.all
-    @workspace = Workspace.find(params[:workspace_id])
-    redirect_to workspace_path(@workspace) 
+    if @channel.save          
+      @current=Channel.last
+      @uchannel=Invite.new(user_id: current_user.id, channel_id: @current.id, role: "owner")
+      @uchannel.save   
+      @workspace = Workspace.all
+      @workspace = Workspace.find(session[:curr_workspace_id])
+      redirect_to workspace_path(@workspace) 
+    else
+      flash[:notice] = "Please insert Channel Name!!"
+      redirect_to new_channel_path(:id => @workspace.id)
+    end
   end
 
   # PATCH/PUT /channels/1

@@ -4,4 +4,6 @@ class Channel < ApplicationRecord
 
   belongs_to :workspace
   has_many :messages, :dependent => :destroy
+
+  validates :channel_name,  presence: true
 end

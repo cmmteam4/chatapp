@@ -47,11 +47,14 @@ class WorkspacesController < ApplicationController
       if @workspace.save 
         @current = Workspace.last                  
         @userworkspace=Userworkspace.new(user_id: current_user.id, workspace_id: @current.id, wks_name: @uworkspace['wks_name'], username: @uworkspace['username'], email: @uworkspace['email'], wks_password: @uworkspace['wks_password'], owner: "true")  
-        if @userworkspace.save 
+        @userworkspace.save 
           helpers.set_workspace @workspace
-          redirect_to @workspace, notice: 'Workspace was successfully created'  
-        end
-      end      
+          flash[:notice] = "Creating workspace successfully!!"
+          redirect_to @workspace, notice: 'Workspace was successfully created'          
+      else
+        flash[:notice] = "Please insert workspace name!!"
+        redirect_to new_workspace_path
+      end 
   end  
     
   
@@ -59,10 +62,10 @@ class WorkspacesController < ApplicationController
     def update
       @workspace = Workspace.find(session[:curr_workspace_id])
       if @workspace.update_attributes(workspace_params)
-      @userworkspace = Userworkspace.find_by(workspace_id: @workspace.id)
-      @userworkspace.update_attribute(:wks_name, @workspace.wks_name)
-      #flash[:success] = "Profile updated"
-      redirect_to :action => "show", :id => @workspace.id      
+        @userworkspace = Userworkspace.find_by(workspace_id: @workspace.id)
+        @userworkspace.update_attribute(:wks_name, @workspace.wks_name)
+        #flash[:success] = "Profile updated"
+        redirect_to :action => "show", :id => @workspace.id      
       end      
     end
   

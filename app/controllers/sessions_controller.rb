@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+        
     end
   
     def create
@@ -7,15 +8,17 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:session][:password])       
             session[:user_id] = user.id
             redirect_to '/choose_workspace'
-    else  
-        flash[:notice] = "Invalid email/password combination"
-      render 'new'
-      
+        else  
+            flash[:alert] = "Invalid email/password combination"
+            render 'new'      
+        end
     end
-end
-    def destroy       
+
+    def destroy      
+        if !current_user.nil? 
         session.delete(:user_id)
         @current_user = nil            
-   redirect_to root_url
+         redirect_to root_url
+        end
     end
 end

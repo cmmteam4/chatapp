@@ -1,17 +1,25 @@
 <% provide(:title, "WokspaceList") %>
 <%= render 'layouts/nav' %>
 
-<h1 align="center"><%= t('Workspace Lists') %></h1>
+<h1 align="center"><%= t('Workspace Lists') %></h1><br>
 <div class="d-flex justify-content-center">
-  <div class="col-md-6 col-md-offset-4">
-    <div class="col-sm-6"><br>
-      <ul class="list-group list-group-flush">
-        <li class="list-item"><%= render partial: 'workspace', collection: @workspacelist %> </li>   
-      </ul>   
-    </div>  
-    <br><br>
-    <%= link_to t('Create Workspace'), new_workspace_path %>
-   <%= paginate  @workspacepage %> 
+  <div class="col-md-4 col-md-offset-4">    
+
+  <div class="form-group has-feedback">
+        <ul class="list-group list-group-flush">
+          <li class="list-item"><%= render partial: 'workspace', collection: @workspacelist %> </li>   
+        </ul>   
+  </div>    
+
+  <div class="form-group has-feedback">
+    <p> If you want to create new workspace! <%= link_to t('Create Workspace'), new_workspace_path %></p>
+  </div>
+  <br><br>
+
+  <div class="form-group has-feedback">
+    <%= paginate  @workspacepage %> 
+  </div>
+
   </div>
 </div>
 

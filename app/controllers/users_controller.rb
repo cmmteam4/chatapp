@@ -7,10 +7,10 @@ class UsersController < ApplicationController
         @user = User.new(name:params[:name],email:params[:email],password:params[:password])
         if @user.save
           log_in @user
-          redirect_to root_url
-         # Handle the success of saving here.
-        else
-          render 'new'
+          redirect_to root_url        
+        else          
+          flash[:alert] = "Please enter your Email!!"
+          redirect_to '/signup'
         end
       end
       private
