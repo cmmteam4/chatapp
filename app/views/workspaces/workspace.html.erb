@@ -1,14 +1,6 @@
 <% provide(:title, "ChooseWorkspace") %>
 <%= render 'layouts/nav' %>
 
-<div class="leng">
-  <% if I18n.locale == I18n.default_locale %>
-       <%=link_to "Japan",{:locale=>'ja'}%>
-        <%else%>
-        <%=link_to "English" ,{:locale=>'en'}%>
-<%end%>
-</div>
-
 <div class="d-flex justify-content-center">
 <h1><%= t ('ChooseYourWorkspace') %></h1>
 </div>
@@ -22,4 +14,15 @@
 <div class="d-flex justify-content-center">
 <%= button_to t('Create your Workspace'), new_workspace_path, :id => "open-contacts-dialog-btn",
       :class => "btn btn-primary btn-lg", :method => :get %>
-</div>  
+  </div>
+  <br>
+<div class="d-flex justify-content-center">Change Language &nbsp;
+      <% if I18n.locale == I18n.default_locale %>
+       <%=link_to t('Japan'), {:locale=>'ja'}, class: "btn btn-sm btn-secondary" %>
+        <%else%>
+        <%=link_to t('English') , {:locale=>'en'}, class: "btn btn-sm btn-secondary" %>
+  <%end%>  
+</div>
+
+
+
