@@ -66,6 +66,9 @@ class WorkspacesController < ApplicationController
         @userworkspace.update_attribute(:wks_name, @workspace.wks_name)
         #flash[:success] = "Profile updated"
         redirect_to :action => "show", :id => @workspace.id      
+        else
+          flash[:notice] = "Workspace Name is blank"
+          redirect_to edit_workspace_path(:id => @workspace.id)
       end      
     end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_080845) do
+ActiveRecord::Schema.define(version: 2019_07_22_090735) do
 
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "channel_name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_080845) do
     t.string "username"
     t.string "wks_password"
     t.boolean "owner"
+    t.string "role"
     t.index ["user_id"], name: "index_userworkspaces_on_user_id"
     t.index ["workspace_id"], name: "index_userworkspaces_on_workspace_id"
   end

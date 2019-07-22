@@ -32,9 +32,7 @@ class ChannelsController < ApplicationController
     #@users = current_user.invites.where(role: 'member')
     #@invite_member = User.all.find(current_user.id).invites.where(role: 'member')
     #user.invites.find_by(channel_id: params[:channel_id]).role == 'member'
-    #helpers.get_chat_user 
-   
-   
+    
   end
 
   

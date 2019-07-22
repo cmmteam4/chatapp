@@ -1,21 +1,5 @@
-<div class="card">
-<div class="card-block">
-  <div class="row">
-    <div class="col-sm-1">
-      <% @msg = User.find(message.user_id) %>
-      <%= gravatar_for @msg %>
-    </div>
-    <div class="col-sm-6">
-      <p class="card-text">
-        <span class="text-muted"><%= @msg.name %> at <%= message.timestamp %> says</span><br>
-        <%= message.talk %>
-      </p>
-    </div>
-    <div class="col-sm-5">
-    </div>
-  </div>
-
-</div>
-</div>
-
-
+<small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
+<div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
+    <%= message.msg_body %>
+    <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small> 
+</div>         

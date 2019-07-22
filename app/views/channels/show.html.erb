@@ -17,19 +17,22 @@
         :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to t('Add Member'), channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
 </div>
+<br><br>
 
-
-<div class="message">
-  <% @messages.each do |message| %> 
-    <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
-    <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
-        <%= message.msg_body %>
-        <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
-    </div><br>
-  <% end %>  
+<div id="message-container">
+<% @messages.each do |message| %> 
+  <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
+  <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
+      <%= message.msg_body %>
+      <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
+  </div><br>
+<% end %> 
 </div><br><br>
 
-<%= form_with(model: @message, local: true) do |f| %>
+
+
+
+<%= form_with(model: @message) do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
  
   <div class="form-group">

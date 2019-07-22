@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'  
   delete '/logout',  to: 'sessions#destroy'
-  root 'welcome_page#home'  
+  root 'welcome_page#home'    
   get 'thread/index'   
 
   get    '/choose_workspace',    to: 'workspaces#workspace' 
   get    '/workspaceList',    to: 'workspaces#wksList'  
   get    '/welcome',    to: 'welcome_page#home'
   get    '/inviteFriend',    to: 'wksinvite#index'
+  get    '/edit',    to: 'users#edit'
+  #get    '/home',    to: 'welcome_page#home'
   
   #get    '/login',    to: 'welcome_page#login'
   #get    '/signup',    to: 'welcome_page#signup'  
