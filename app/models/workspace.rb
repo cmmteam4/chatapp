@@ -7,5 +7,7 @@ class Workspace < ApplicationRecord
     paginates_per 2
 
     validates :wks_name, presence: true
-    #validates :email, {presence: true,length:{maximunm:100}
+
+   
+   
 end

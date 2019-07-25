@@ -49,6 +49,7 @@ class ChannelsController < ApplicationController
   def new
     @channel = Channel.new
     @workspace = Workspace.find(session[:curr_workspace_id])
+    
   end
 
   # GET /channels/1/edit
@@ -68,8 +69,8 @@ class ChannelsController < ApplicationController
       @workspace = Workspace.find(session[:curr_workspace_id])
       redirect_to workspace_path(@workspace) 
     else
-      flash[:notice] = "Please insert Channel Name!!"
-      redirect_to new_channel_path(:id => @workspace.id)
+      flash[:alert] = t('Please insert Channel Name!!')
+      redirect_to new_channel_path(@workspace)
     end
   end
 

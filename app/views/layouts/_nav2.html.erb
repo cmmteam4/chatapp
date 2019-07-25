@@ -1,6 +1,6 @@
 <ul>
   <li style="float:left"><%= link_to @workspace.wks_name, edit_workspace_path(:id => @workspace.id) %></li>  
-  <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-  <li><%= link_to current_user.email, '/edit' %></li>  
-  <li><%= link_to "Home", workspace_path(@workspace) %></li>  
+  <li><%= link_to t('Log Out'), logout_path, method: :delete %></li>
+  <li><%= link_to current_user.email, "/edit" %></li>  
+  <li><%= link_to t('Home'), workspace_path(@workspace) %></li>  
 </ul>
