@@ -1,47 +1,36 @@
 <% provide(:title, 'Sign up') %>
 <div class="d-flex justify-content-center">
 <div class="col-md-4 col-md-offset-4">
-<h1 style="text-align:center"><%= t('Sign up') %></h1>
+<h1 style="text-align:center"><%= t('Sign up')%></h1>
     
   <%= form_for(@user) do |f| %>
       <div class="form-group has-feedback">
-      <%= f.label :name %>
+      <%= f.label :"#{ t('name') }" %>
       <%= f.text_field :name, name:"name", class: 'form-control' %>
       </div>
       
       <div class="form-group has-feedback">
-      <%= f.label :email %>
+      <%= f.label :"#{ t('email') }" %>
       <%= f.email_field :email, name:"email", class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">
-      <%= f.label :password %>
+      <%= f.label :"#{ t('password') }" %>
       <%= f.password_field :password, name:"password", class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">
-      <%= f.label :password_confirmation %>
+      <%= f.label :"#{ t('password_confirmation') }" %>
       <%= f.password_field :password_confirmation, name:"password_confrimation", class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">
-      <%= f.submit "Create my account", class: "btn btn-primary btn-block" %>
+      <%= f.submit t('Create my account'), class: "btn btn-primary btn-block" %>
       </div>
 
       <div class="form-group has-feedback">
-      <p>If you hava account?  <%= link_to 'Login', login_path %></p>
+      <p><%= t('If you have account?') %> &nbsp; <%= link_to t('Login!'), login_path %></p>
       </div>
     <% end %>
   </div>
 </div>
-
-<% provide(:title, "Home") %>
-
-<div class="leng">
-  <% if I18n.locale == I18n.default_locale %>
-       <%=link_to "Japan",{:locale=>'ja'}, :class => "btn btn-secondary btn-sm "%>
-        <%else%>
-        <%=link_to "English" ,{:locale=>'en'}, :class => "btn btn-secondary btn-sm "%>
-<%end%>
-</div>
-

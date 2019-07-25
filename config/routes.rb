@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ja/ do
-  get    '/signup',  to: 'users#new'
+  root   'welcome_page#home'  
+  get    '/signup',   to: 'users#new'
   post   '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'  
@@ -19,8 +20,6 @@ Rails.application.routes.draw do
   #get    '/signup',    to: 'welcome_page#signup'  
   #get "/channel/:cid/:wid",to:"channels#cshow" 
   
-
-
   resources :users
   resources :messages
   
@@ -31,7 +30,6 @@ Rails.application.routes.draw do
   resources :channels do
     resources :invite
   end 
- 
-end 
+ end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
