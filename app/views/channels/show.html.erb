@@ -1,3 +1,4 @@
+
 <% provide(:title, "ChannelChat") %>
 <div class="navv">
   <%= render 'layouts/nav2' %>
@@ -21,16 +22,33 @@
 
 <div id="message-container">
 <% @messages.each do |message| %> 
-  <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
+  <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small> 
   <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
       <%= message.msg_body %>
-      <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
-  </div><br>
+      <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>
+      <% if message.starred == true %>
+      <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fas fa-heart" style="position: absolute;left:90%;z-index: 999;color:red;"></i>
+      <% else %>
+      <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fas fa-heart" style="position: absolute;left:90%;z-index: 999;color:grey;"></i>
+      <% end %>   
+</div>
+
+
+
+<%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
+<input type="hidden" name="star_id" id="star_hidden" >
+<% end %>
 <% end %> 
-</div><br><br>
+  </div><br>
 
 
-
+<script>
+  function gofavourite(a){
+      var demo = a.getAttribute("star_id");
+      document.getElementById("star_hidden").value = demo;  
+      document.getElementById("form2").submit();
+  }
+</script>
 
 <%= form_with(model: @message) do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>

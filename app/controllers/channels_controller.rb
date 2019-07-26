@@ -1,26 +1,15 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel, only: [:show, :edit, :update, :destroy]
-   
-  
-  #GET /channellist
-  #def channellist
-    #@workspace=Workspace.find(params[:id])
-    #@channels = Channel.where(:workspace_id => @workspace.id)    
-  #end
-
-  def channelsetting
-    @workspace=Workspace.find(params[:id])
-    @channels = Channel.where(:workspace_id => @workspace.id)   
-  end
-
-
+  before_action :set_channel, only: [:show, :edit, :update, :destroy]   
+    
   # GET /channels
   def index
+    logger.info "-----index ------"
     @channels = Channel.all
   end
 
   # GET /channels/
   def show 
+    logger.info "-----Show #{params[:id]}------"
     @channel=Channel.find(params[:id])
     @workspace=Workspace.find(session[:curr_workspace_id])
     @channels=Channel.where(:workspace => session[:curr_workspace_id])
@@ -29,37 +18,25 @@ class ChannelsController < ApplicationController
     #@thread = Thread.new
     #@threadlist = Thread.all
     helpers.set_channel @channel   
-    #@users = current_user.invites.where(role: 'member')
-    #@invite_member = User.all.find(current_user.id).invites.where(role: 'member')
-    #user.invites.find_by(channel_id: params[:channel_id]).role == 'member'
-    
-  end
-
-  
-  #def cshow
-    #@channel=Channel.find(params[:cid])
-    #@channels=Channel.all 
-    #@messages=Message.new   
-    #@workspace = Workspace.find(params[:wid])  
-   # @channels=Channel.where(:workspace => params[:wid])    
-   # render template:"channels/show"
- # end 
+  end 
   
   # GET /channels/new
   def new
+    logger.info "-----New------"
     @channel = Channel.new
-    @workspace = Workspace.find(session[:curr_workspace_id])
-    
+    @workspace = Workspace.find(session[:curr_workspace_id])    
   end
 
   # GET /channels/1/edit
   def edit    
+    logger.info "-----Edit #{params[:email]}------"
     @channel = Channel.find(params[:id])
     @workspace = Workspace.find(session[:curr_workspace_id])
   end
 
   # POST /channels  
-  def create      
+  def create    
+    logger.info "-----Create #{params[:email]}------"  
     @channel = Channel.new(channel_name:params[:channel_name],channel_type:params[:channel_type],workspace_id:params[:workspace_id])
     if @channel.save          
       @current=Channel.last
@@ -76,6 +53,7 @@ class ChannelsController < ApplicationController
 
   # PATCH/PUT /channels/1
   def update
+    logger.info "-----Update #{params[:id]}------"
     if @channel.update_attributes(channel_params)     
       @workspace = Workspace.find(session[:curr_workspace_id])  
       redirect_to workspace_path(@workspace) 
@@ -88,9 +66,10 @@ class ChannelsController < ApplicationController
 
   # DELETE /channels/1
   def destroy
+    logger.info "-----Destroy #{params[:id]}------"
     Channel.find(params[:id]).destroy  
     @workspace = Workspace.find(session[:curr_workspace_id])  
-      redirect_to workspace_path(@workspace)
+    redirect_to workspace_path(@workspace)
   end
 
   private

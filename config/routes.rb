@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ja/ do
     root   'welcome_page#home'  
     
-    get    '/signup',   to: 'users#new'
-    post   '/signup',  to: 'users#create'
+    # get    '/signup',   to: 'users#new'
+    # post   '/signup',  to: 'users#create'
 
     get    '/login',   to: 'sessions#new'
     post   '/login',   to: 'sessions#create'
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get    '/inviteFriend',    to: 'wksinvite#index'
     get    '/edit',   to: 'users#edit'
    
+
+   get "/star",to:"messages#ssss"
+   post "/star",to:"messages#star"
 
     resources :users
     resources :messages

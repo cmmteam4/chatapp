@@ -6,6 +6,7 @@ class InviteController < ApplicationController
     end
 
     def update
+        logger.info "-----update #{params[:id]} #{params[:channel_id]}------"
         @invite_user = User.find(params[:id])
         @invite_channel = Channel.find(params[:channel_id])
         @is_invite = Invite.find_by(user: @invite_user, channel: @invite_channel, role: "member")
@@ -27,10 +28,5 @@ class InviteController < ApplicationController
             @is_uninvite.update_attribute(:role, "member")
             redirect_to :action => 'index'
         end
-    end
-
-    #private
-    #def invite_params
-     # params.require(:channel).permit(:channel_name, :is_public)
-  #  end
+    end    
 end

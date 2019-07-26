@@ -6,22 +6,22 @@
   <%= form_for(@user) do |f| %>
       <div class="form-group has-feedback">
       <%= f.label :"#{ t('name') }" %>
-      <%= f.text_field :name, name:"name", class: 'form-control' %>
+      <%= f.text_field :name,  class: 'form-control' %>
       </div>
       
       <div class="form-group has-feedback">
       <%= f.label :"#{ t('email') }" %>
-      <%= f.email_field :email, name:"email", class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">
       <%= f.label :"#{ t('password') }" %><i><%= t('(6 characters minimum)')%></i>
-      <%= f.password_field :password, name:"password", class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">
       <%= f.label :"#{ t('password_confirmation') }" %>
-      <%= f.password_field :password_confirmation, name:"password_confrimation", class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
       <div class="form-group has-feedback">

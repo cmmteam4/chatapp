@@ -2,27 +2,20 @@
 <%= render 'layouts/nav' %>
 
 <div class="d-flex justify-content-center">
-<h1><%= t ('ChooseYourWorkspace') %></h1>
+      <h1><%= t ('ChooseYourWorkspace') %></h1>
 </div>
 <br><br>
 <div class="d-flex justify-content-center">
-<%= button_to t('Find your Workspace'), workspaceList_path, :id => "open-contacts-dialog-btn",
-:class => "btn btn-primary btn-lg ", :method => :get %> 
+      <%= button_to t('Find your Workspace'), workspaceList_path, :id => "open-contacts-dialog-btn",
+            :class => "btn btn-primary btn-lg ", :method => :get %> 
 </div>
+<br><br>
 
-<br><br>
 <div class="d-flex justify-content-center">
-<%= button_to t('Create your Workspace'), new_workspace_path, :id => "open-contacts-dialog-btn",
-      :class => "btn btn-primary btn-lg", :method => :get %>
-  </div>
-  <br>
-<div class="d-flex justify-content-center">Change Language &nbsp;
-      <% if I18n.locale == I18n.default_locale %>
-       <%=link_to t('Japan'), {:locale=>'ja'}, class: "btn btn-sm btn-secondary" %>
-        <%else%>
-        <%=link_to t('English') , {:locale=>'en'}, class: "btn btn-sm btn-secondary" %>
-  <%end%>  
+      <%= button_to t('Create your Workspace'), new_workspace_path, :id => "open-contacts-dialog-btn",
+            :class => "btn btn-primary btn-lg", :method => :get %>
 </div>
+ 
 
 
 

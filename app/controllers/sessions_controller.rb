@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-    def new
-        
+    def new        
     end
   
     def create
+        logger.info "-----Create #{params[:id]}------"
         user = User.find_by(email: params[:session][:email].downcase)
         if user && user.authenticate(params[:session][:password])       
             session[:user_id] = user.id
@@ -16,10 +16,11 @@ class SessionsController < ApplicationController
     end
 
     def destroy      
-        if !current_user.nil? 
-        session.delete(:user_id)
-        @current_user = nil            
-         redirect_to root_url
+        logger.info "-----Destroy #{params[:id]}------"
+        if logged_in?
+            session.delete(:user_id)
+            @current_user = nil            
+            redirect_to root_url
         end
     end
 end

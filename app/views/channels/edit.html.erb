@@ -1,44 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="">
-  
-</head>
-<body>
-
-
+<% provide(:title, "EditChannel") %>
 <%= render 'layouts/nav2' %>
 
 <h1 align="center"><%= t('Editing Channel') %></h1>
-<div class="d-flex justify-content-center">
-<div class="col-md-4 col-md-offset-4">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-4 col-md-offset-4">
 
-<%= form_with(model: @channel, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :channel_name %></a>
-    <%= form.text_field :channel_name, class: 'form-control'  %>
+    <%= form_with(model: @channel, local: true) do |form| %>
+      <div class="form-group has-feedback">
+        <%= form.label :channel_name %></a>
+        <%= form.text_field :channel_name, class: 'form-control'  %>
+      </div>
+
+      <div class="form-group has-feedback">
+        <%= form.label :channel_type %></a>
+        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="channel_type">
+          <option value="public">PUBLIC</option>
+          <option  value="private">PRIVATE</option>
+        </select>
+        </div>  
+  
+      <div class="form-group has-feedback">
+        <%= form.submit t('Update'), class: 'btn btn-primary btn-block' %> 
+      </div>
+
+    <% end %>
+
+      <div class="form-group has-feedback">
+          <%= button_to t('Cancel'), workspace_path(@workspace), :id => "open-contacts-dialog-btn",
+            :class => "btn btn-secondary btn-block", :method => :get %>
+      </div>
+    
+    </div>
   </div>
-<br>
-  <div class="field">
-  <%= form.label :channel_type %></a>
-  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="channel_type">
-  <option value="public">PUBLIC</option>
-  <option  value="private">PRIVATE</option>
-  </select>
-  </div>   
-
-  <%= form.submit t('Update'), class: 'btn btn-primary btn-sm'  %> 
-
-    <%= button_to t('Cancel'), channels_path, :id => "open-contacts-dialog-btn",
-      :class => "btn btn-primary btn-sm", :method => :get %>
-
-  </div>
-<% end %>
-</div>
-</div>
-       
 
 
 
