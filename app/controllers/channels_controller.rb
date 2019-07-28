@@ -18,6 +18,7 @@ class ChannelsController < ApplicationController
     #@thread = Thread.new
     #@threadlist = Thread.all
     helpers.set_channel @channel   
+    @member = Userworkspace.all.includes(:user).where(:role => "member", :workspace => session[:curr_workspace_id])
   end 
   
   # GET /channels/new

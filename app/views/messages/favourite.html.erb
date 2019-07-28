@@ -1,0 +1,23 @@
+<% provide(:title, "Favourite") %>
+<div class="navv">
+  <%= render 'layouts/nav2' %>
+</div>
+
+<div class="sidenav">
+  <%= render 'layouts/sidebar' %>
+</div>
+
+<div class="main">
+<h5><%= @channel.channel_name %></h5>
+<hr>
+<h4>Favourite Messages</h4><hr><br>
+
+<div class="form-group has-feedback">
+    <% @star.each do |st| %> 
+        <small> <%= st.user.name %> </small><small> <%= st.created_at %> </small> 
+            <div class="alert alert-success" style="width: 400px;height: 50px;align: left;">
+                <%= st.msg_body %>                
+            </div>
+    <% end%>
+</div>
+</div>

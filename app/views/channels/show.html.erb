@@ -1,4 +1,3 @@
-
 <% provide(:title, "ChannelChat") %>
 <div class="navv">
   <%= render 'layouts/nav2' %>
@@ -9,14 +8,15 @@
 </div>
 
 <div class="main">
-<%= @channel.channel_name %>
+<h5><%= @channel.channel_name %></h5>
 <hr>
 
 <div class="setting">
    <%= link_to t('Edit'), edit_channel_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
    <%= link_to t('Delete'),  @channel, :id => "open-contacts-dialog-btn",
-        :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to t('Add Member'), channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
+        :class => "btn btn-primary btn-sm ", :method => :delete, data: { confirm: 'Are you sure?' } %>    
+    <%= link_to t('Favourite Messages'), '/favourite', :class => "btn btn-primary btn-sm ", :method => :get %>
+    <%= link_to t('Add Member'), channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
 </div>
 <br><br>
 
@@ -32,8 +32,6 @@
       <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fas fa-heart" style="position: absolute;left:90%;z-index: 999;color:grey;"></i>
       <% end %>   
 </div>
-
-
 
 <%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
 <input type="hidden" name="star_id" id="star_hidden" >

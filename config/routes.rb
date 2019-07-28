@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get    '/workspaceList',    to: 'workspaces#wksList'  
     get    '/inviteFriend',    to: 'wksinvite#index'
     get    '/edit',   to: 'users#edit'
-   
+    get    '/favourite',   to: 'messages#favourite'   
 
    get "/star",to:"messages#ssss"
    post "/star",to:"messages#star"

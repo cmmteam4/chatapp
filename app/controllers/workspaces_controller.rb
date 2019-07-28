@@ -11,6 +11,7 @@ class WorkspacesController < ApplicationController
       @channels = Channel.all
       @channels = Channel.where(:workspace => @workspace.id)   
       helpers.set_workspace @workspace
+      @member = Userworkspace.all.includes(:user).where(:role => "member", :workspace => session[:curr_workspace_id])
     end
 
     def workspace
