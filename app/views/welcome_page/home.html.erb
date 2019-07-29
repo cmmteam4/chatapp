@@ -2,14 +2,14 @@
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 style="font-size:50px"><%= t('Welcome Our ChatApp') %></h1><br><br>
-    <%= link_to t('Sign up now!'), new_user_path, class: "btn btn-lg btn-secondary" %>
-    <%= link_to t('Login!'), '/login', class: "btn btn-lg btn-secondary" %><br><br>
+    <h1 style="font-size:65px"><%= t('Welcome Our ChatApp') %></h1><br><br>
+    <%= link_to t('Sign up now!'), new_user_path, class: "btn btn-lg btn-outline-warning" %>
+    <%= link_to t('Login!'), '/login', class: "btn btn-lg btn-outline-warning" %><br><br>
   </div>
 
   <div class="d-flex justify-content-end local_txt">
-      <%=link_to t('日本語'), {:locale=>'ja'} ,class: "btn btn-sm btn-secondary"%>　
-      <%=link_to t('English') , {:locale=>'en'},class: "btn btn-sm btn-secondary" %>
+      <%=link_to t('日本語'), {:locale=>'ja'} ,class: "btn btn-md btn-secondary"%>　
+      <%=link_to t('English') , {:locale=>'en'},class: "btn btn-md btn-secondary" %>
   </div>
 
 </div>

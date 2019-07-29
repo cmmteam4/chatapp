@@ -8,22 +8,22 @@
 
     <div class="form-group has-feedback"> 
       <%= form_for @uworkspace, url: {action: "create"} do |f| %>
-      <%= f.label :wks_name %>
+      <%= f.label :"#{ t('wks_name') }" %>
       <%= f.text_field :wks_name, class: 'form-control' %>
     </div>
 
     <div class="form-group has-feedback"> 
-      <%= f.label :username %>
+      <%= f.label :"#{ t('username') }" %>
       <%= f.text_field :username, class: 'form-control' %>
     </div>
 
     <div class="form-group has-feedback"> 
-      <%= f.label :email %>
+      <%= f.label :"#{ t('email') }" %>
       <%= f.email_field :email, class: 'form-control' %>
     </div>
 
     <div class="form-group has-feedback"> 
-      <%= f.label :wks_password %>
+      <%= f.label :"#{ t('wks_password') }" %>
       <%= f.password_field :wks_password, class: 'form-control' %> 
     </div>
 

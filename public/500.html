@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: white;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -19,11 +19,14 @@
   }
 
   .rails-default-error-page div.dialog > div {
+    margin-top: 70px;
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+
+    
+
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -32,7 +35,7 @@
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
+    font-size: 130%;
     color: #730E15;
     line-height: 1.5em;
   }
@@ -40,7 +43,7 @@
   .rails-default-error-page div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
-    background-color: #F7F7F7;
+    background-color: white;
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -50,7 +53,7 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+ 
   </style>
 </head>
 
@@ -58,9 +61,14 @@
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<img class="irc_mi" src="https://www.geekhive.com/wp-content/uploads/2017/08/500InternalServerError.jpg" onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)" alt="Image result for 500 internal server error photo" width="400" height="200" style="margin-top: 40px;" data-iml="1564365910506">
+      <h1><%= t('Something has gone seriously wrong') %></h1><br>
+---------------------------------------------------------------------
+   <br><p><%= t('We're experiencing an internal server problem') %></p>
+	<p><%= t('Please try back later') %></p>
+
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+ 
   </div>
 </body>
 </html>

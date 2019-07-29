@@ -1,3 +1,4 @@
+<% provide(:title, "UpdateProfile") %>
 <%= render 'layouts/nav2' %>
 <div class="d-flex justify-content-center">
 <div class="col-md-5 col-md-offset-4">
@@ -6,17 +7,21 @@
 
   <%= form_for @users do |f| %>
 
+      <i class="fas fa-user-alt"></i>
       <%= f.label :"#{ t('name') }" %>
-      <%= f.text_field :name, name:"name", class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control' %>
 
+      <i class="fas fa-mail-bulk"></i>
       <%= f.label :"#{ t('email') }" %>
-      <%= f.email_field :email, name:"email",class: 'form-control' %>
+      <%= f.email_field :email,class: 'form-control' %>
 
+      <i class="fas fa-key"></i>
       <%= f.label :"#{ t('password') }" %>
-      <%= f.password_field :password,name:"password", class: 'form-control' %>
+      <%= f.password_field :password,class: 'form-control' %>
 
+      <i class="fas fa-key"></i>
       <%= f.label :"#{ t('password_confirmation') }" %>
-      <%= f.password_field :password_confirmation, name:"password_confirmation", class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
       <br>
       <%= f.submit t('Update Profile'), class: "btn btn-primary btn-block" %><br> 
       

@@ -1,7 +1,0 @@
-  <% @messages.each do |message| %> 
-    <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small>   
-    <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
-        <%= message.msg_body %>
-        <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>          
-    </div><br>
-  <% end %>  

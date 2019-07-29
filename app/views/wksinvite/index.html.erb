@@ -1,3 +1,4 @@
+<% provide(:title, "InviteWorkspace") %>
 <div class="navv">
 <%= render 'layouts/nav2' %>
 </div>
@@ -7,13 +8,12 @@
 </div>
 
 <div class="d-flex justify-content-center">
-<div class="row">
-  <div class="col-sm-8">
+<div class="col-md-4 col-md-offset-4">
             <table class="table table-hover">
             <thead>
                 <tr>                
-                <th>Name</th>
-                <th>Email</th>
+                <th><%= t('name') %></th>
+                <th><%= t('email') %></th>
                 <th></th>
                 </tr>
             </thead>
@@ -26,17 +26,17 @@
         <td>
         <% if !user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
         <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).role == 'member' %>
-        <%= link_to "Uninvite", workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+        <%= link_to t('Uninvite'), workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
         <% end %>
                         
         <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).role.empty? %>
-        <%= link_to "Invite", workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+        <%= link_to t('Invite'), workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
         <% end %>
                     
       <% end %>
 
         <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
-        <%= link_to "Invite",  workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+        <%= link_to t('Invite'),  workspace_wksinvite_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
         <% end %>
         </td>
       </tr>
@@ -47,8 +47,3 @@
 </table>
   </div>
 </div>
-<p id="new_article"><p>
-</div>
-
-</body>
-</html>

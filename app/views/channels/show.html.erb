@@ -18,6 +18,15 @@
     <%= link_to t('Favourite Messages'), '/favourite', :class => "btn btn-primary btn-sm ", :method => :get %>
     <%= link_to t('Add Member'), channel_invite_index_path(@channel), :class => "btn btn-primary btn-sm ", :method => :get %>
 </div>
+
+<hr>
+<div>
+  <p>Group Members:
+    <% @chmember.each do |chm| %> 
+      <%= chm.user.name %> ,
+    <% end %></p>
+    <hr>
+</div>
 <br><br>
 
 <div id="message-container">
@@ -39,7 +48,6 @@
 <% end %> 
   </div><br>
 
-
 <script>
   function gofavourite(a){
       var demo = a.getAttribute("star_id");
@@ -52,7 +60,7 @@
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
  
   <div class="form-group">
-    <%= f.text_area :msg_body, name:"msg_body", class: 'form-control', placeholder: t('Write Something') %>  
+    <%= f.text_area :msg_body, name:"msg_body",class: 'form-control', placeholder: t('Write Something') %>  
   </div>
 
   <%= f.submit t('Send'), class: 'btn btn-primary btn-sm' %>

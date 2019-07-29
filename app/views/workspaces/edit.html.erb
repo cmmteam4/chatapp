@@ -1,3 +1,4 @@
+<% provide(:title, "EditWorkspace") %>
 <%= render 'layouts/nav2' %>
 
 <div class="d-flex justify-content-center">
@@ -6,7 +7,7 @@
 
       <%= form_with(model: @workspace, local: true) do |form| %>
         <div class="form-group has-feedback">
-          <%= form.label :wks_name %>
+          <%= form.label :"#{ t('wks_name') }" %>
           <%= form.text_field :wks_name, class: 'form-control' %>
         </div>
   

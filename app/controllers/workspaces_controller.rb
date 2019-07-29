@@ -71,9 +71,7 @@ class WorkspacesController < ApplicationController
       logger.info "-----Destroy #{params[:id]}------"
       Workspace.destroy(params[:id])
       redirect_to '/choose_workspace', notice: 'Workspace was successfully deleted'      
-    end
-    
- 
+    end 
   
     private
     # Use callbacks to share common setup or constraints between actions.

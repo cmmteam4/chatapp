@@ -5,11 +5,13 @@
 
   <%= form_for(:session, url: login_path) do |f| %>
       <div class="form-group has-feedback">
+      <i class="fas fa-mail-bulk"></i>
       <%= f.label :"#{ t('email') }" %>
       <%= f.email_field :email, class: 'form-control' %>
       </div>
       
       <div class="form-group has-feedback">
+      <i class="fas fa-key"></i>
       <%= f.label :"#{ t('password') }" %>
       <%= f.password_field :password, class: 'form-control' %>
       </div>

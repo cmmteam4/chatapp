@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+    background-color: white;
+    color: balck;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
@@ -19,11 +19,13 @@
   }
 
   .rails-default-error-page div.dialog > div {
+    margin-top: 70px;
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-bottom-color: #BBB; 
+
+
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -32,7 +34,7 @@
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
+    font-size: 120%;
     color: #730E15;
     line-height: 1.5em;
   }
@@ -40,7 +42,7 @@
   .rails-default-error-page div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
-    background-color: #F7F7F7;
+    background-color: white;
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -51,17 +53,29 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+.irc_mi
+{
+  margin-right: 10px;
+  margin-left: -1px;
+  margin-top: 90px; 
+}
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
+
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<img class="irc_mi" src="https://blog.fluidui.com/content/images/2019/01/imageedit_1_9273372713.png" onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)" alt="Image result for Image result for 404 error page examples" width="400" height="200" style="margin-top: 40px;" data-iml="1564240707430">
+      <h1><%= t('We can't seem to find the page you're looking for.') %></h1>
+--------------------------------------------------------------------
+      <p><%= t('You may have mistyped the address or the page may have moved.') %></p><br>
+
+      <br>
+
+     </div>
+    
   </div>
 </body>
 </html>
