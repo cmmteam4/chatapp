@@ -92,7 +92,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.log_formatter = LogFormatter.new
+  config.log_formatter = MessageFormatter.new
   config.log_level = :debug 
 
 end
