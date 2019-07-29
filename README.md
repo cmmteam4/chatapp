@@ -31,7 +31,7 @@ Things you may want to cover:
     -heroku pg:info
     -heroku addons:create heroku-postgresql
     -heroku pg:info
-    -heroku config --app team5chatapp
+    -heroku config --app team4chatapp
     -heroku run rails db:migrate
    
 

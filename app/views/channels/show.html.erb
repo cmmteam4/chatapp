@@ -36,9 +36,9 @@
       <%= message.msg_body %>
       <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>
       <% if message.starred == true %>
-      <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fas fa-heart" style="position: absolute;left:90%;z-index: 999;color:red;"></i>
+        <%= fa_icon('heart', star_id: message.id, class: 'star_color_red', onclick: 'gofavourite(this)') %>
       <% else %>
-      <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fas fa-heart" style="position: absolute;left:90%;z-index: 999;color:grey;"></i>
+        <%= fa_icon('heart', star_id: message.id, class: 'star_color_grey', onclick: 'gofavourite(this)') %>
       <% end %>   
 </div>
 
@@ -65,4 +65,6 @@
 
   <%= f.submit t('Send'), class: 'btn btn-primary btn-sm' %>
 <% end %>
+
+
  
