@@ -9,23 +9,20 @@ Bundler.require(*Rails.groups)
 module Chat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.2
 
-    config.active_record.default_timezone = :local
+    #change timezome
     config.time_zone = 'Tokyo'
     
-    config.load_defaults 5.2
+    #set local to English and Japansese
+    #Make default locale to Japanese
     config.i18n.available_locales = [:en, :ja]
-    config.i18n.default_locale = :en
-    config.log_level = :error
+    config.i18n.default_locale = :ja
+
+    #Looad lib folder to user cuatomer message class
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
-    
- 
-     #Rails.logger = Logger.new(STDOUT)
-     #Rails.logger.level = Logger::DEBUG
-     #Rails.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
-     #config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
-
+  
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
