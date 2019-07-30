@@ -44,7 +44,7 @@ class WorkspacesController < ApplicationController
         @userworkspace=Userworkspace.new(user_id: current_user.id, workspace_id: @current.id, wks_name: @uworkspace['wks_name'], username: @uworkspace['username'], email: @uworkspace['email'], wks_password: @uworkspace['wks_password'], owner: "true")  
         @userworkspace.save 
         helpers.set_workspace @workspace          
-        redirect_to @workspace, notice: 'Workspace was successfully created'          
+        redirect_to @workspace        
       else
         flash[:notice] = t('Please enter your information completely!!')
         redirect_to new_workspace_path

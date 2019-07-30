@@ -25,8 +25,8 @@ Things you may want to cover:
 
 * Heroku deploy step
     -heroku login -i
-    -heroku apps:create team5chatapp
-    -heroku git:remote -a team5chatapp
+    -heroku apps:create team4chatapp
+    -heroku git:remote -a team4chatapp
     -git push heroku master
     -heroku pg:info
     -heroku addons:create heroku-postgresql
