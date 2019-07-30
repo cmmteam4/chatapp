@@ -4,6 +4,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -61,7 +62,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "test-2_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "chat_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -91,7 +92,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
- 
-
+  config.log_level = :debug
+  config.log_formatter = MessageFormatter.new
 end
