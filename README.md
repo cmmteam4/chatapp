@@ -1,28 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+ステップ13: デプロイをしよう ( Step 13 : Let's deploy )
 * Heroku deploy steps
     -heroku login -i
     -heroku apps:create team4chatapp
