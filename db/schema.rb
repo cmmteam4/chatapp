@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_090735) do
+ActiveRecord::Schema.define(version: 2019_07_31_071951) do
 
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "channel_name"
@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 2019_07_22_090735) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "msg_body"
     t.boolean "starred"
     t.boolean "unread"
     t.bigint "user_id"
     t.bigint "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "msg_body"
     t.index ["channel_id"], name: "index_messages_on_channel_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
