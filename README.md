@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-* Heroku deploy step
+* Heroku deploy steps
     -heroku login -i
     -heroku apps:create team4chatapp
     -heroku git:remote -a team4chatapp
