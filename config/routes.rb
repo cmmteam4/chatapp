@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get    '/inviteFriend',    to: 'wksinvite#index'
   get    '/edit',   to: 'users#edit'
   get    '/favourite',   to: 'messages#favourite'   
-
-  get "/star",to:"messages#ssss"
+  get    '/about',   to: 'welcome_page#about'  
+  
   post "/star",to:"messages#star"
 
   resources :users

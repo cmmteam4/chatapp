@@ -140,12 +140,21 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: sandybrown;
-  }
-  
+  }  
 
 // locale style
 .local_txt {
   color: black;
   font-weight: bolder;
   margin-right: 15px;
+}
+
+//about
+.about {
+  margin-top: 100px;
+  border-style: double;
+  border-color: blue;
+  width: 400px;
+  height: 300px;
+  padding: 10px;
 }
