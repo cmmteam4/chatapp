@@ -8,7 +8,14 @@
 </div>
 
 <div class="main">
-<h5><%= @channel.channel_name %></h5>
+
+<h5><%= @channel.channel_name %> 
+  <p style="font-size: 15px;">Group Members:
+    <% @chmember.each do |chm| %> 
+      <%= chm.user.name %> ,
+    <% end %></p></h5>
+   
+
 <hr>
 
 <div class="setting">
@@ -20,33 +27,25 @@
 </div>
 
 <hr>
-<div>
-  <p>Group Members:
-    <% @chmember.each do |chm| %> 
-      <%= chm.user.name %> ,
-    <% end %></p>
-    <hr>
-</div>
-<br><br>
 
 <div id="message-container">
 <% @messages.each do |message| %> 
   <small> <%= message.user.name %> </small><small> <%= message.created_at %> </small> 
-  <div class="alert alert-primary" style="width: 400px;height: 50px;align: left;">
-      <%= message.msg_body %>
+  <div class="alert alert-primary" style="width: auto;height: auto;align: left;overflow-y: auto;">
+      <%= message.msg_body %><br>
       <small><%= link_to t('Delete'),  message_path(message), :method => :delete, data: { confirm: 'Are you sure?' } %></small>
       <% if message.starred == true %>
         <%= fa_icon('heart', star_id: message.id, class: 'star_color_red', onclick: 'gofavourite(this)') %>
       <% else %>
         <%= fa_icon('heart', star_id: message.id, class: 'star_color_grey', onclick: 'gofavourite(this)') %>
       <% end %>   
-</div>
+  </div>
 
 <%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
 <input type="hidden" name="star_id" id="star_hidden" >
 <% end %>
 <% end %> 
-  </div><br>
+</div><br>
 
 <script>
   function gofavourite(a){
@@ -56,15 +55,17 @@
   }
 </script>
 
+
 <%= form_with(model: @message) do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id, name:"channel_id" %>
- 
-  <div class="form-group">
-    <%= f.text_area :msg_body, name:"msg_body",class: 'form-control', placeholder: t('Write Something') %>  
-  </div>
 
-  <%= f.submit t('Send'), class: 'btn btn-primary btn-sm' %>
+  <div class="form-group">
+  <%= f.text_area :msg_body, name:"msg_body",class: 'form-control', placeholder: t('Write Something') %>
+  </div>
+   <%= f.submit t('Send'), class: 'btn btn-primary btn-sm' %>
+
 <% end %>
 
+</div>
 
  
